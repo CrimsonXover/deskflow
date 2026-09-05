@@ -33,7 +33,8 @@ jobs:
     # upstream-supported Flatpak package. The resulting bundle is installable
     # on Ubuntu 20.04.6 LTS with Flatpak enabled.
     container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.11
+      # Keep this aligned with Deskflow's proven upstream Flatpak CI image.
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.10
       options: --privileged
 
     steps:
@@ -53,7 +54,7 @@ jobs:
         with:
           bundle: deskflow-${{ env.DESKFLOW_PACKAGE_VERSION }}-ubuntu-20.04.6-x86_64.flatpak
           manifest-path: deploy/linux/flatpak/org.deskflow.deskflow.yml
-          cache-key: flatpak-builder-ubuntu-20.04.6-x86_64-${{ github.sha }}
+          cache-key: flatpak-builder-ubuntu-20.04.6-x86_64-2.0
           arch: x86_64
           upload-artifact: false
 
